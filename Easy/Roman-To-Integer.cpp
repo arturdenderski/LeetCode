@@ -1,14 +1,30 @@
 class Solution {
 public:
-    vector<int> twoSum(vector<int>& nums, int target) {
-        unordered_map<int,int> map;
-        for(int i = 0; i < nums.size(); i++)
+    int romanToInt(string s) {    
+        unordered_map<char,int> roman = 
         {
-            if(map.find(target-nums[i])!=map.end())
-                return {i,map[target-nums[i]]};
+            {'I', 1},
+            {'V', 5},
+            {'X', 10},
+            {'L', 50},
+            {'C', 100},
+            {'D', 500},
+            {'M', 1000}
+        };
+
+        int result = 0;
+
+        for(int i = 0; i < s.length(); i++)
+        {
+            if(i + 1 < s.length() && roman[s[i]] < roman[s[i+1]])
+            {
+                result -= roman[s[i]];
+            }
             else
-                map.insert({nums[i], i});
+            {
+                result += roman[s[i]];
+            }
         }
-        return {};
+        return result;
     }
 };
