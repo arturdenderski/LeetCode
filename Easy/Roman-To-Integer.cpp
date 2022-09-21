@@ -17,14 +17,11 @@ public:
         for(int i = 0; i < s.length(); i++)
         {
             if(i + 1 < s.length() && roman[s[i]] < roman[s[i+1]])
-            {
                 result -= roman[s[i]];
-            }
             else
-            {
                 result += roman[s[i]];
-            }
         }
+        
         return result;
     }
 };
